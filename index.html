@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毒舌あざらしギャラリー</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .seal-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .seal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .seal-image {
+            width: 100%;
+            height: 250px;
+            background: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+        
+        .seal-comment {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            font-weight: bold;
+            color: #856404;
+            position: relative;
+        }
+        
+        .seal-comment::before {
+            content: "💬";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #fff3cd;
+            padding: 0 5px;
+        }
+        
+        .seal-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 10px;
+        }
+        
+        .refresh-btn {
+            display: block;
+            margin: 40px auto 0;
+            padding: 15px 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .refresh-btn:hover {
+            background: #5a6fd8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦭 毒舌あざらしギャラリー</h1>
+        <p class="subtitle">辛辣な一言で心をえぐってくるあざらしたち</p>
+        
+        <div class="gallery" id="gallery">
+        </div>
+        
+        <button class="refresh-btn" onclick="generateSeals()">新しいあざらしを見る 🔄</button>
+    </div>
+
+    <script>
+        const sealComments = [
+            "あなたの努力、見えないんですけど？",
+            "その服装、本気ですか？",
+            "今日もお疲れ様でした（棒読み）",
+            "やる気スイッチ、壊れてません？",
+            "その髪型、寝癖じゃないんですね？",
+            "頑張ってるつもりなんですね、素晴らしい",
+            "今日の成果、どこにあるんでしょう？",
+            "その笑顔、作り物感がすごいですね",
+            "お疲れ様です、何をしてたかは知りませんが",
+            "明日は本気出すんですよね？（何度目？）",
+            "そのやる気、いつまで続きますか？",
+            "お仕事、楽しそうでいいですね",
+            "その考え方、斬新ですね（悪い意味で）",
+            "今日も一日無駄にしましたね",
+            "その自信、どこから来るんですか？"
+        ];
+        
+        const sealNames = [
+            "毒舌マサオ",
+            "辛口ハナコ",
+            "皮肉タロウ",
+            "嫌味ジロウ",
+            "毒吐きサブロウ",
+            "厳しめユキコ",
+            "冷静ケンジ",
+            "現実アキコ"
+        ];
+        
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+        
+        function generateSeals() {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            
+            for (let i = 0; i < 6; i++) {
+                const card = document.createElement('div');
+                card.className = 'seal-card';
+                
+                const comment = getRandomElement(sealComments);
+                const name = getRandomElement(sealNames);
+                
+                card.innerHTML = `
+                    <div class="seal-image">🦭</div>
+                    <div class="seal-name">${name}</div>
+                    <div class="seal-comment">${comment}</div>
+                `;
+                
+                gallery.appendChild(card);
+            }
+        }
+        
+        // 初期表示
+        generateSeals();
+    </script>
+</body>
+</html>

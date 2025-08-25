@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/lyo1231/Downloads/**)",
+      "Read(//Users/lyo1231/Downloads/**)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/Users/lyo1231/Downloads"
+    ]
+  }
+}

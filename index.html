@@ -60,13 +60,16 @@
         .seal-image {
             width: 100%;
             height: 250px;
-            background: #e9ecef;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
             margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .seal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
         }
         
         .seal-comment {
@@ -159,6 +162,8 @@
             return arr[Math.floor(Math.random() * arr.length)];
         }
         
+        const sealImages = ['１.png', '２.jpeg', '３.jpeg'];
+        
         function generateSeals() {
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = '';
@@ -169,9 +174,10 @@
                 
                 const comment = getRandomElement(sealComments);
                 const name = getRandomElement(sealNames);
+                const image = getRandomElement(sealImages);
                 
                 card.innerHTML = `
-                    <div class="seal-image">🦭</div>
+                    <div class="seal-image"><img src="${image}" alt="毒舌あざらし"></div>
                     <div class="seal-name">${name}</div>
                     <div class="seal-comment">${comment}</div>
                 `;

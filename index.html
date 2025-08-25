@@ -168,11 +168,18 @@
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = '';
             
+            const usedComments = [];
+            
             for (let i = 0; i < 6; i++) {
                 const card = document.createElement('div');
                 card.className = 'seal-card';
                 
-                const comment = getRandomElement(sealComments);
+                let comment;
+                do {
+                    comment = getRandomElement(sealComments);
+                } while (usedComments.includes(comment) && usedComments.length < sealComments.length);
+                usedComments.push(comment);
+                
                 const name = getRandomElement(sealNames);
                 const image = getRandomElement(sealImages);
                 

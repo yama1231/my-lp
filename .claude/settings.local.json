@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Read(//Users/lyo1231/Downloads/**)",
-      "Read(//Users/lyo1231/Downloads/**)"
+      "Read(//Users/lyo1231/Downloads/**)",
+      "Bash(cp:*)"
     ],
     "deny": [],
     "ask": [],

@@ -162,13 +162,14 @@
             return arr[Math.floor(Math.random() * arr.length)];
         }
         
-        const sealImages = ['１.png', '２.jpeg', '３.jpeg'];
+        const sealImages = ['１.png', '２.jpeg', '３.jpeg', '４.png', '５.png', '６.png'];
         
         function generateSeals() {
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = '';
             
             const usedComments = [];
+            const usedImages = [];
             
             for (let i = 0; i < 6; i++) {
                 const card = document.createElement('div');
@@ -180,8 +181,13 @@
                 } while (usedComments.includes(comment) && usedComments.length < sealComments.length);
                 usedComments.push(comment);
                 
+                let image;
+                do {
+                    image = getRandomElement(sealImages);
+                } while (usedImages.includes(image) && usedImages.length < sealImages.length);
+                usedImages.push(image);
+                
                 const name = getRandomElement(sealNames);
-                const image = getRandomElement(sealImages);
                 
                 card.innerHTML = `
                     <div class="seal-image"><img src="${image}" alt="毒舌あざらし"></div>
